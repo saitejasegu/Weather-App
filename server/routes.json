@@ -1,0 +1,3 @@
+{    
+    "/Users/:uid": "/Users?uid=:uid"
+}
