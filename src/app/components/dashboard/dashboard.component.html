@@ -1,19 +1,14 @@
- <div class="container mt-5" style="max-width: 600px">
+<app-header></app-header>
 
-   <div class="row" *ngIf="ngAuthService.userState as user">
-     <div class="media">
-       <img class="align-self-start mr-5 img-thumbnail rounded-circle"
-         src="{{(user.photoURL) ? user.photoURL : '/assets/dummy.jpg'}}" alt="{{user.displayName}}">
-       <div class="media-body">
-         <h2>Hi: <strong>{{(user.displayName) ? user.displayName : 'User'}}</strong></h2>
-         <p>User ID: <strong>{{user.uid}}</strong></p>
-         <p>Email: <strong>{{user.email}}</strong></p>
-       </div>
-     </div>
-   </div>
+<div class="row cityinputcontainer">
+  <input type="text" class="form-control" placeholder="Enter City Name" (keyup)="onKey($event)">
+</div>
+<div class="buttoncontainer">
+  <button type="button" class="btn btn-primary addcitybutton" (click)="addCity()">Add City</button>
+</div>
 
-   <a class="btn btn-block btn-primary" (click)="ngAuthService.SignOut()">
-     Sign Out
-   </a>
-
- </div>
+<div class="widgetcontainer">
+  <li *ngFor="let place of cities">
+    <app-weatherwidget city={{place}} class="container"></app-weatherwidget>
+  </li>
+</div>

@@ -1,0 +1,31 @@
+.topbar{
+    background-color: #2196F3;
+    font-family: Arial, Helvetica, sans-serif;
+    height: fit-content;
+    color: white;
+    width:auto;
+    border-top-left-radius:10px;
+    border-top-right-radius:10px;
+}
+  .example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .button-signout{
+    margin-top: 4%;
+    font-size: 12px;
+    margin:auto;
+    margin-left: 5px;
+    background-color: #f44336;
+  }
+
+  .rounded-circle {
+    max-width: 150px;
+  }
+  .logo
+  {
+    height: 20%;
+    width: 20%;
+    margin: -5%;
+    margin-left: auto;
+  }

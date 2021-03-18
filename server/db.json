@@ -1,17 +1,8 @@
 {
-  "Users": [
+  "cities":[
     {
-      "uid": "pXsnyjDWfIRKO3TT2o07qobevoX2",
-      "cities": [
-        "Nellore",
-        "Chennai"
-      ]
-    },
-    {
-      "uid": "pXsnyjDWfIRKO3TT2o0hhjbqobevoX2",
-      "cities": [
-        "Nellore"
-      ]
+      "id":1,
+      "cityname":"Nellore"
     }
   ]
 }

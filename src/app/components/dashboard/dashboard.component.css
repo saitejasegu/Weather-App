@@ -1,0 +1,25 @@
+.inputbox
+{
+    margin-top: 20px;
+    height: 75%;
+}
+
+.cityinputcontainer{
+    width: 40%;
+    margin: auto;
+    margin-top: 40px;
+    
+}
+.buttoncontainer{
+    text-align: center;
+}
+.addcitybutton{
+    margin-top: 10px;
+}
+
+.widgetcontainer{
+    display: flex;
+    flex-direction: row;
+    flex-flow: row wrap;
+    margin-top: 40px;
+}

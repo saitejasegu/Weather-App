@@ -1,8 +1,9 @@
-* {
+@import "~font-awesome/css/font-awesome.css";
+/* * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
-}
+} */
 
 html,
 body {
@@ -28,24 +29,7 @@ h6 {
   font-weight: 600;
 }
 
-.media-body h1 {
-  font-weight: 300;
-  margin-bottom: 20px;
-}
 
-.media-body h1 strong {
-  font-weight: 600;
-}
-
-.media-body p {
-  margin-bottom: 10px;
-  font-weight: 300;
-}
-
-.media-body p strong {
-  margin-bottom: 10px;
-  font-weight: 600;
-}
 
 .px-logo {
   display: block;
@@ -116,7 +100,7 @@ h3 {
   width: 100%;
 }
 
-.forgotPassword span {
+.forgotPassword span{
   color: #3C89EF;
   font-size: 14px;
   font-weight: 400;
@@ -414,7 +398,4 @@ body .table thead th {
   max-width: 125px;
 }
 
-.rounded-circle {
-  max-width: 150px;
-}
 

@@ -1,5 +1,8 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { NgAuthService } from "../../ng-auth.service";
+import { Weather } from "../../Weather";
+import {CityserviceService} from '../../service/cityservice.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,13 +14,56 @@ export class DashboardComponent implements OnInit {
 
   user:any;
   parsedJson: any;
-  constructor(public ngAuthService: NgAuthService) { }
+  city:String ;
+  cities: Array<String> =['Nellore','Bengaluru','Chennai','Adelaide'];
+  weather: Weather = new Weather();
+  data: any;
+  constructor(public ngAuthService: NgAuthService, private httpClient:HttpClient,private cityService: CityserviceService) { }
 
   ngOnInit(): void {
     this.user = localStorage.getItem('user');
-    this.parsedJson = JSON.parse(this.user);
-    console.log(this.parsedJson.uid);
-    localStorage.setItem('authtoken',this.parsedJson.uid);
+    this.cityService.getAllCities().subscribe(
+      data=>{
+        this.cities=data;
+        console.log(this.cities);
+      },
+      error=>{
+        console.log(error);
+      }
+      
+    );
   }
-
+  onKey(event: any)
+  {
+      this.city=event.target.value;
+      console.log(this.city);
+  }
+  addCity(){
+    if(this.city==null)
+    {
+      alert("Enter City Name");
+    }
+    else
+    {
+      if(this.cities.indexOf(this.city)>-1)
+      {
+        alert("City Already Exists");
+      }
+      else
+      {
+        fetch('https://api.openweathermap.org/data/2.5/weather?q='+this.city+'&appid=d42795876661ef466a7f9d63deebe5a6')
+        .then(response=>response.json())
+        .then(data=>{this.data=data})
+        if(this.data==null)
+        {
+          alert("City Does not Exist");
+        }
+        else
+        {
+          this.cities.push(this.city); 
+        }
+      }
+    }
+    
+  }
 }
