@@ -27,6 +27,22 @@
     {
       "cityname": "Kolkata",
       "id": 8
+    },
+    {
+      "cityname": "Adamstown",
+      "id": 9
+    },
+    {
+      "cityname": "Portland",
+      "id": 10
+    },
+    {
+      "cityname": "Pune",
+      "id": 11
+    },
+    {
+      "cityname": "Shimla",
+      "id": 12
     }
   ]
 }

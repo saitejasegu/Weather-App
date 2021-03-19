@@ -34,6 +34,17 @@ export class WeatherwidgetComponent implements OnInit {
     this.WeatherData.temp_min = (this.WeatherData.main.temp_min - 273.15).toFixed(0);
     this.WeatherData.temp_max = (this.WeatherData.main.temp_max - 273.15).toFixed(0);
     this.WeatherData.temp_feels_like = (this.WeatherData.main.feels_like - 273.15).toFixed(0);
+    //console.log(this.WeatherData.weather[0].main)
+    if(this.WeatherData.weather[0].main=="Clouds")
+    {
+      this.WeatherData.iscloudy=true;
+      this.WeatherData.isRain=false
+    }
+    else if(this.WeatherData.weather[0].main=="Rain"){
+      this.WeatherData.isRain=true;
+      this.WeatherData.iscloudy=false;
+    }
+    //console.log(this.WeatherData);
     //this.comp.ngOnInit();
   }
 }

@@ -55,6 +55,7 @@ export class DashboardComponent implements OnInit {
       });
       if(this.flag)
       {
+        this.flag=false;
         alert("City Already Exists");
       }
       else
