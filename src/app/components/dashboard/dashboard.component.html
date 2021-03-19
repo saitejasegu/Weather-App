@@ -1,14 +1,14 @@
 <app-header></app-header>
 
 <div class="row cityinputcontainer">
-  <input type="text" class="form-control" placeholder="Enter City Name" (keyup)="onKey($event)">
+  <input type="text" class="form-control" placeholder="Enter City Name" (keyup)="onKey($event)" [(ngModel)]="city">
 </div>
 <div class="buttoncontainer">
   <button type="button" class="btn btn-primary addcitybutton" (click)="addCity()">Add City</button>
 </div>
 
 <div class="widgetcontainer">
-  <li *ngFor="let city of cities">
+  <div *ngFor="let city of cities">
     <app-weatherwidget city={{city.cityname}} class="container"></app-weatherwidget>
-  </li>
+  </div>
 </div>

@@ -4,6 +4,8 @@ import { NgAuthService } from "../../ng-auth.service";
 import { Weather } from "../../Weather";
 import {CityserviceService} from '../../service/cityservice.service';
 import {City} from '../../city';
+import { throwToolbarMixedModesError } from '@angular/material/toolbar';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,7 +18,7 @@ export class DashboardComponent implements OnInit {
   flag: boolean = false;
   user:any;
   parsedJson: any;
-  city:String ;
+  @Input("city") city:String ;
   cities: Array<City>;
   weather: Weather = new Weather();
   data: any;
@@ -37,14 +39,25 @@ export class DashboardComponent implements OnInit {
   }
   onKey(event: any)
   {
-      this.city=event.target.value;
-      console.log(this.city);
+      //console.log(this.city);
       fetch('https://api.openweathermap.org/data/2.5/weather?q='+this.city+'&appid=d42795876661ef466a7f9d63deebe5a6')
         .then(response=>response.json())
-        .then(data=>{this.data=data})
+        .then(
+          data=>{
+            console.log(data);
+            if(data.cod==404)
+            {
+              this.data=null;
+            }
+            else{
+              this.data=data;
+            }
+        },
+          );
   }
   addCity(){
-    if(this.city==null)
+    console.log(this.city);
+    if(this.city=="" || this.city==null)
     {
       alert("Enter City Name");
     }
