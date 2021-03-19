@@ -1,6 +1,8 @@
 import { TitleCasePipe } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit ,Input } from '@angular/core';
 import { City } from 'src/app/city';
+import { CityserviceService } from 'src/app/service/cityservice.service';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 
 @Component({
@@ -11,11 +13,20 @@ import { DashboardComponent } from '../dashboard/dashboard.component';
 export class WeatherwidgetComponent implements OnInit {
 
   WeatherData: any;
-  constructor(private comp:DashboardComponent) { }
+  cities: Array<City>;
+  constructor(private comp:DashboardComponent, private cityService: CityserviceService,private httpClient: HttpClient) { }
   @Input() city : String;
   ngOnInit(): void {
     this.getWeatherData()
-    console.log(this.city);
+    this.cityService.getAllCities().subscribe(
+      data=>{
+        this.cities=data;
+        console.log("cities data");
+      },
+      error=>{
+        console.log(error);
+      }
+    );
   }
 
   getWeatherData(){
@@ -46,5 +57,24 @@ export class WeatherwidgetComponent implements OnInit {
     }
     //console.log(this.WeatherData);
     //this.comp.ngOnInit();
+  }
+
+    deleteCity(){
+    console.log("out data")
+    this.cities.forEach(element => {
+      console.log("Inside Foreach");
+      if(element.cityname==this.city)
+      {
+        this.httpClient.delete('http://localhost:3000/cities/'+element.id).subscribe(
+          data=>{
+            console.log(data);
+            this.comp.ngOnInit();
+          },
+          error=>{
+            console.log(error);
+          }
+        );
+      }
+    });
   }
 }

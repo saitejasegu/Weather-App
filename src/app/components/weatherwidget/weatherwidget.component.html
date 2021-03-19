@@ -1,10 +1,4 @@
 <div id="divWeatherMain"> 
-    <!-- <div *ngIf="WeatherData.isDay" class="weatherWidgetRow">
-        Day Time
-    </div>   
-    <div *ngIf="!WeatherData.isDay" class="weatherWidgetRow">
-        Night Time
-    </div> -->
     <div *ngIf="WeatherData.isDay" class="weatherWidgetRow">
         <i class="fas fa-3x fa-sun sun"></i>  
     </div>   
@@ -21,5 +15,7 @@
     <div class="weatherWidgetRow" style="font-size: 12px;">{{WeatherData.temp_min}}°C / {{WeatherData.temp_max}}°C</div>
     <div class="weatherWidgetRow" style="font-size: 12px;">Feels Like: {{WeatherData.temp_feels_like}}°C</div>
     <div class="weatherWidgetRow" style="font-size: 25px;margin-top: 10px;">{{WeatherData.name}}</div>
-    
+    <div class="buttoncontainer">
+        <button (click)="deleteCity()" class="btn btn-primary deletecitybutton">Remove</button>
+    </div>
 </div>

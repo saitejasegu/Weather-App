@@ -39,6 +39,9 @@ export class DashboardComponent implements OnInit {
   {
       this.city=event.target.value;
       console.log(this.city);
+      fetch('https://api.openweathermap.org/data/2.5/weather?q='+this.city+'&appid=d42795876661ef466a7f9d63deebe5a6')
+        .then(response=>response.json())
+        .then(data=>{this.data=data})
   }
   addCity(){
     if(this.city==null)
@@ -60,9 +63,6 @@ export class DashboardComponent implements OnInit {
       }
       else
       {
-        fetch('https://api.openweathermap.org/data/2.5/weather?q='+this.city+'&appid=d42795876661ef466a7f9d63deebe5a6')
-        .then(response=>response.json())
-        .then(data=>{this.data=data})
         if(this.data==null)
         {
           alert("City Does not Exist");
