@@ -1,8 +1,32 @@
 {
-  "cities":[
+  "cities": [
     {
-      "id":1,
-      "cityname":"Nellore"
+      "id": 1,
+      "cityname": "Nellore"
+    },
+    {
+      "cityname": "Karimnagar",
+      "id": 2
+    },
+    {
+      "cityname": "Mumbai",
+      "id": 3
+    },
+    {
+      "cityname": "Tokyo",
+      "id": 5
+    },
+    {
+      "cityname": "Chennai",
+      "id": 6
+    },
+    {
+      "cityname": "Hyderabad",
+      "id": 7
+    },
+    {
+      "cityname": "Kolkata",
+      "id": 8
     }
   ]
 }

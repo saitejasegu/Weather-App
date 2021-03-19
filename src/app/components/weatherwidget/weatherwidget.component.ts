@@ -1,5 +1,6 @@
 import { TitleCasePipe } from '@angular/common';
 import { Component, OnInit ,Input } from '@angular/core';
+import { City } from 'src/app/city';
 import { DashboardComponent } from '../dashboard/dashboard.component';
 
 @Component({

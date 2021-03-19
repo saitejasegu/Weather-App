@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgAuthService } from "../../ng-auth.service";
 import { Weather } from "../../Weather";
 import {CityserviceService} from '../../service/cityservice.service';
+import {City} from '../../city';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,10 +13,11 @@ import {CityserviceService} from '../../service/cityservice.service';
 
 export class DashboardComponent implements OnInit {
 
+  flag: boolean = false;
   user:any;
   parsedJson: any;
   city:String ;
-  cities: Array<String> =['Nellore','Bengaluru','Chennai','Adelaide'];
+  cities: Array<City>;
   weather: Weather = new Weather();
   data: any;
   constructor(public ngAuthService: NgAuthService, private httpClient:HttpClient,private cityService: CityserviceService) { }
@@ -45,7 +47,13 @@ export class DashboardComponent implements OnInit {
     }
     else
     {
-      if(this.cities.indexOf(this.city)>-1)
+      this.cities.forEach(element => {
+        if(element.cityname==this.city)
+        {
+          this.flag=true
+        }        
+      });
+      if(this.flag)
       {
         alert("City Already Exists");
       }
@@ -60,7 +68,16 @@ export class DashboardComponent implements OnInit {
         }
         else
         {
-          this.cities.push(this.city); 
+          // this.cities.push(new City(this.city)); 
+          this.cityService.addNote(new City(this.city)).subscribe(
+            data=>{
+              this.cities.push(data);
+            },
+            error=>
+            {
+              console.log(error);
+            }
+          )
         }
       }
     }

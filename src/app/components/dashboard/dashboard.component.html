@@ -8,7 +8,7 @@
 </div>
 
 <div class="widgetcontainer">
-  <li *ngFor="let place of cities">
-    <app-weatherwidget city={{place}} class="container"></app-weatherwidget>
+  <li *ngFor="let city of cities">
+    <app-weatherwidget city={{city.cityname}} class="container"></app-weatherwidget>
   </li>
 </div>
